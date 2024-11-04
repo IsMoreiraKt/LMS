@@ -6,3 +6,11 @@ services:
     ports: 
       - "1354:1354"
     network_mode: bridge
+
+  lda_frontend:
+    build:
+      dockerfile: lda_frontend/Dockerfile
+      context: .
+    ports: 
+      - "1355:80"
+    network_mode: bridge
