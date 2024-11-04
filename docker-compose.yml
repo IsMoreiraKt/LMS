@@ -1,0 +1,8 @@
+services:
+  lda_server:
+    build: 
+      dockerfile: lda_server/Dockerfile
+      context: .
+    ports: 
+      - "1354:1354"
+    network_mode: bridge
