@@ -3,7 +3,7 @@
     id="app-wrapper"
     :class="['app-container', isDark ? 'bg-dark text-white' : 'bg-light']"
   >
-    <h1>Hello World</h1>
+    <HeaderComponent/>
   </div>
 </template>
 
@@ -11,10 +11,13 @@
 
 <script>
   import { mapState, mapActions } from 'vuex';
+  import HeaderComponent from './components/HeaderComponent.vue'
 
   export default {
     name: 'App',
-    components: { },
+    components: {
+      HeaderComponent,
+    },
     computed: {
       ...mapState(['isDark'])
     },
