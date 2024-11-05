@@ -6,6 +6,10 @@ services:
     ports: 
       - "1354:1354"
     network_mode: bridge
+    environment:
+      - FLASK_ENV=production
+    depends_on:
+      - postgres_database
 
   lda_frontend:
     build:
@@ -14,3 +18,18 @@ services:
     ports: 
       - "1355:80"
     network_mode: bridge
+
+  postgres_database:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=${DATABASE_POSTGRES_NAME}
+      - POSTGRES_USER=${DATABASE_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DATABASE_POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+
+volumes:
+  pgdata:
